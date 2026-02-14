@@ -1,5 +1,5 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, Text3D, Center } from "@react-three/drei";
+import { Float } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
 
@@ -30,7 +30,7 @@ function Sphere() {
   return (
     <group ref={ref}>
 
-      {skills.map((skill, i) => {
+      {skills.map((_, i) => {
 
         const angle = (i / skills.length) * Math.PI * 2;
         const radius = 3;

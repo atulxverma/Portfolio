@@ -3,7 +3,6 @@ import {
   FaNodeJs,
   FaDocker,
   FaGitAlt,
-  FaGithub,
   FaPython,
   FaHtml5,
   FaCss3Alt,
@@ -12,15 +11,11 @@ import {
 
 import {
   SiNextdotjs,
-  SiTypescript,
   SiPostgresql,
   SiPrisma,
   SiPostman,
-  SiExpress,
   SiMongodb,
-  SiGraphql,
   SiTailwindcss,
-  SiRedux,
   SiFirebase,
   SiCplusplus,
   SiBootstrap,

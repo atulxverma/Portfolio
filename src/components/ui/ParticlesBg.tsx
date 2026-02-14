@@ -1,59 +1,34 @@
-import { useCallback } from "react";
 import Particles from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import type { Engine } from "@tsparticles/engine";
+import { useEffect, useState } from "react";
 
 export function ParticlesBg() {
 
-  const init = useCallback(async (engine: Engine) => {
+  const [init, setInit] = useState(false);
 
-    await loadSlim(engine);
+  useEffect(() => {
+
+    loadSlim(window.tsParticles);
+
+    setInit(true);
 
   }, []);
 
+  if (!init) return null;
+
   return (
-
     <Particles
-      id="tsparticles"
-      init={init}
       options={{
-
         fullScreen: false,
-
-        background: {
-          color: "transparent",
-        },
-
         particles: {
-
-          number: {
-            value: 60,
-          },
-
-          color: {
-            value: "#a855f7",
-          },
-
-          opacity: {
-            value: 0.3,
-          },
-
-          size: {
-            value: 2,
-          },
-
-          move: {
-            enable: true,
-            speed: 0.4,
-          },
-
+          number: { value: 60 },
+          color: { value: "#a855f7" },
+          opacity: { value: 0.3 },
+          size: { value: 2 },
+          move: { enable: true, speed: 0.4 },
         },
-
       }}
       className="absolute inset-0 z-0"
-
     />
-
   );
-
 }
