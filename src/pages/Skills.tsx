@@ -119,32 +119,20 @@ export function Skills() {
                 Git, GitHub, Postman, VS Code,
                 Deployment, Debugging
               </p>
-
             </div>
-
-
           </motion.div>
 
-
-          {/* RIGHT SIDE — SPHERE */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             className="h-[500px] w-full flex items-center justify-center"
           >
-
+            
             <LogoSphere />
-
           </motion.div>
-
-
         </div>
-
-
       </SectionWrapper>
-
     </div>
-
   );
 
 }
