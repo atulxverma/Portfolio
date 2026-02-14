@@ -1,77 +1,150 @@
-import { motion } from "framer-motion";
-import { skills } from "../lib/data";
 import { SectionWrapper } from "../components/ui/SectionWrapper";
+import { SkillsMarquee } from "../components/ui/SkillsMarquee";
+import { LogoSphere } from "../components/3d/LogoSphere";
+import { motion } from "framer-motion";
+import { Code2, Database, Server, Globe } from "lucide-react";
 
 export function Skills() {
-  const categories = ["frontend", "backend", "tools", "design"];
 
   return (
-    <div className="pt-24 min-h-screen bg-black text-white">
+
+    <div className="pt-24 min-h-screen bg-black text-white relative">
+
       <SectionWrapper>
-        <div className="text-center mb-16">
-          <motion.h1 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold mb-6"
-          >
-            Technical <span className="text-purple-400">Arsenal</span>
-          </motion.h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            A curated list of technologies I use to build robust and scalable applications.
-            Always learning, always evolving.
+
+
+        {/* TITLE */}
+        <motion.div
+          initial={{ opacity: 0, y: -40 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-10"
+        >
+
+          <h1 className="text-5xl md:text-6xl font-bold mb-4">
+
+            My <span className="text-purple-400">Skills</span>
+
+          </h1>
+
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+
+            Technologies and tools I use to build modern,
+            scalable, and high-performance web applications.
+
           </p>
+
+        </motion.div>
+
+
+        {/* MARQUEE */}
+        <div className="mb-20">
+
+          <SkillsMarquee />
+
         </div>
 
-        <div className="grid gap-12">
-          {categories.map((category) => {
-            const categorySkills = skills.filter(s => s.category === category);
-            
-            if (categorySkills.length === 0) return null;
 
-            return (
-              <div key={category}>
-                <h2 className="text-2xl font-bold mb-6 capitalize flex items-center gap-3 border-b border-white/10 pb-4">
-                  {category} <span className="text-sm font-normal text-gray-500 ml-auto">{categorySkills.length} skills</span>
-                </h2>
-                
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                  {categorySkills.map((skill, index) => (
-                    <motion.div
-                      key={skill.name}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.05 }}
-                      className="group bg-white/5 p-6 rounded-xl border border-white/10 hover:border-purple-500/50 hover:bg-white/10 transition-all duration-300"
-                    >
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="p-3 bg-black/50 rounded-lg text-purple-400 group-hover:text-white transition-colors">
-                          <skill.icon size={24} />
-                        </div>
-                        <h3 className="font-bold text-lg">{skill.name}</h3>
-                      </div>
-                      
-                      <div className="w-full bg-black/50 h-2 rounded-full overflow-hidden">
-                        <motion.div 
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1, delay: 0.5 }}
-                          className="h-full bg-gradient-to-r from-purple-600 to-blue-500"
-                        />
-                      </div>
-                      <div className="flex justify-between mt-2 text-xs text-gray-500">
-                        <span>Beginner</span>
-                        <span>Expert</span>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
+        {/* GRID */}
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+
+
+          {/* LEFT SIDE */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="space-y-6"
+          >
+
+
+            {/* CARD 1 */}
+            <div className="bg-white/5 border border-purple-500/30 rounded-xl p-6 backdrop-blur-md hover:border-purple-500 transition-all">
+
+              <Code2 className="text-purple-400 mb-3" />
+
+              <h3 className="text-xl font-bold mb-2">
+                Frontend Development
+              </h3>
+
+              <p className="text-gray-400">
+                React, Next.js, TypeScript, Tailwind CSS,
+                Framer Motion, Three.js
+              </p>
+
+            </div>
+
+
+            {/* CARD 2 */}
+            <div className="bg-white/5 border border-purple-500/30 rounded-xl p-6 backdrop-blur-md hover:border-purple-500 transition-all">
+
+              <Server className="text-purple-400 mb-3" />
+
+              <h3 className="text-xl font-bold mb-2">
+                Backend Development
+              </h3>
+
+              <p className="text-gray-400">
+                Node.js, Express.js, Prisma, REST APIs,
+                Authentication, Server Architecture
+              </p>
+
+            </div>
+
+
+            {/* CARD 3 */}
+            <div className="bg-white/5 border border-purple-500/30 rounded-xl p-6 backdrop-blur-md hover:border-purple-500 transition-all">
+
+              <Database className="text-purple-400 mb-3" />
+
+              <h3 className="text-xl font-bold mb-2">
+                Database
+              </h3>
+
+              <p className="text-gray-400">
+                SQL, PostgreSQL, MongoDB, Supabase
+              </p>
+
+            </div>
+
+
+            {/* CARD 4 */}
+            <div className="bg-white/5 border border-purple-500/30 rounded-xl p-6 backdrop-blur-md hover:border-purple-500 transition-all">
+
+              <Globe className="text-purple-400 mb-3" />
+
+              <h3 className="text-xl font-bold mb-2">
+                Tools & Others
+              </h3>
+
+              <p className="text-gray-400">
+                Git, GitHub, Postman, VS Code,
+                Deployment, Debugging
+              </p>
+
+            </div>
+
+
+          </motion.div>
+
+
+          {/* RIGHT SIDE — SPHERE */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="h-[500px] w-full flex items-center justify-center"
+          >
+
+            <LogoSphere />
+
+          </motion.div>
+
+
         </div>
+
+
       </SectionWrapper>
+
     </div>
+
   );
+
 }

@@ -15,13 +15,13 @@ export function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSent(true);
       setFormState({ name: "", email: "", message: "" });
-      
+
       setTimeout(() => setIsSent(false), 5000);
     }, 1500);
   };
@@ -30,7 +30,7 @@ export function Contact() {
     <div className="pt-24 min-h-screen bg-black text-white">
       <SectionWrapper>
         <div className="text-center mb-16">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-bold mb-6"
@@ -38,7 +38,7 @@ export function Contact() {
             Let's <span className="text-purple-400">Connect</span>
           </motion.h1>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Have a project in mind or just want to say hi? 
+            Have a project in mind or just want to say hi?
             I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
           </p>
         </div>
@@ -55,19 +55,19 @@ export function Contact() {
                   </div>
                   <div>
                     <h4 className="font-medium text-white mb-1">Email Me</h4>
-                    <a href="mailto:hello@devportfolio.com" className="text-gray-400 hover:text-white transition-colors">
-                      hello@devportfolio.com
+                    <a href="mailto:atulv9926@gmail.com">
+                      atulv9926@gmail.com
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-blue-500/20 rounded-lg text-blue-400">
                     <MapPin size={24} />
                   </div>
                   <div>
                     <h4 className="font-medium text-white mb-1">Location</h4>
-                    <p className="text-gray-400">San Francisco, CA (Remote available)</p>
+                    <p className="text-gray-400">Moradabad, Uttar Pradesh, India</p>
                   </div>
                 </div>
 
@@ -77,7 +77,7 @@ export function Contact() {
                   </div>
                   <div>
                     <h4 className="font-medium text-white mb-1">Call Me</h4>
-                    <p className="text-gray-400">+1 (555) 123-4567</p>
+                    <p className="text-gray-400">+91 9528148549</p>
                   </div>
                 </div>
               </div>
@@ -86,7 +86,7 @@ export function Contact() {
             <div className="bg-gradient-to-br from-purple-900/20 to-blue-900/20 p-8 rounded-2xl border border-white/10">
               <h3 className="text-xl font-bold mb-4">Looking for a Freelancer?</h3>
               <p className="text-gray-400 mb-6">
-                I'm currently available for freelance projects. 
+                I'm currently available for freelance projects.
                 If you have a project that needs some creative touch, let's talk.
               </p>
               <div className="flex gap-2">
@@ -97,7 +97,7 @@ export function Contact() {
           </div>
 
           {/* Contact Form */}
-          <motion.form 
+          <motion.form
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
@@ -105,55 +105,54 @@ export function Contact() {
             className="bg-white/5 p-8 rounded-2xl border border-white/10"
           >
             <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
-            
+
             <div className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">Name</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   id="name"
                   required
                   value={formState.name}
-                  onChange={(e) => setFormState({...formState, name: e.target.value})}
+                  onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                   className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors"
                   placeholder="John Doe"
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">Email</label>
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   id="email"
                   required
                   value={formState.email}
-                  onChange={(e) => setFormState({...formState, email: e.target.value})}
+                  onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                   className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors"
                   placeholder="john@example.com"
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">Message</label>
-                <textarea 
+                <textarea
                   id="message"
                   required
                   rows={5}
                   value={formState.message}
-                  onChange={(e) => setFormState({...formState, message: e.target.value})}
+                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                   className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors resize-none"
                   placeholder="Tell me about your project..."
                 />
               </div>
 
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 disabled={isSubmitting || isSent}
-                className={`w-full py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-all ${
-                  isSent 
-                    ? "bg-green-600 text-white cursor-default" 
+                className={`w-full py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-all ${isSent
+                    ? "bg-green-600 text-white cursor-default"
                     : "bg-white text-black hover:bg-gray-200"
-                } ${isSubmitting ? "opacity-70 cursor-wait" : ""}`}
+                  } ${isSubmitting ? "opacity-70 cursor-wait" : ""}`}
               >
                 {isSubmitting ? (
                   "Sending..."
