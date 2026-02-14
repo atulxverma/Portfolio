@@ -1,72 +1,58 @@
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial } from "@react-three/drei";
-import { useRef, useMemo } from "react";
-import * as THREE from "three";
-
-function Particles() {
-
-  const ref = useRef<THREE.Points>(null);
-
-  const particles = useMemo(() => {
-
-    const count = 2000;
-
-    const positions = new Float32Array(count * 3);
-
-    for (let i = 0; i < count; i++) {
-
-      positions[i * 3] = (Math.random() - 0.5) * 20;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
-
-    }
-
-    return positions;
-
-  }, []);
-
-  useFrame((state, delta) => {
-
-    if (ref.current) {
-
-      ref.current.rotation.y += delta * 0.02;
-      ref.current.rotation.x += delta * 0.01;
-
-    }
-
-  });
-
-  return (
-
-    <Points ref={ref} positions={particles} stride={3}>
-
-      <PointMaterial
-        transparent
-        color="#a855f7"
-        size={0.03}
-        sizeAttenuation
-        depthWrite={false}
-      />
-
-    </Points>
-
-  );
-
-}
+import { useCallback } from "react";
+import Particles from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
+import type { Engine } from "@tsparticles/engine";
 
 export function ParticlesBg() {
 
+  const init = useCallback(async (engine: Engine) => {
+
+    await loadSlim(engine);
+
+  }, []);
+
   return (
 
-    <div className="fixed inset-0 z-0 pointer-events-none">
+    <Particles
+      id="tsparticles"
+      init={init}
+      options={{
 
-      <Canvas camera={{ position: [0, 0, 5] }}>
+        fullScreen: false,
 
-        <Particles />
+        background: {
+          color: "transparent",
+        },
 
-      </Canvas>
+        particles: {
 
-    </div>
+          number: {
+            value: 60,
+          },
+
+          color: {
+            value: "#a855f7",
+          },
+
+          opacity: {
+            value: 0.3,
+          },
+
+          size: {
+            value: 2,
+          },
+
+          move: {
+            enable: true,
+            speed: 0.4,
+          },
+
+        },
+
+      }}
+      className="absolute inset-0 z-0"
+
+    />
 
   );
 
