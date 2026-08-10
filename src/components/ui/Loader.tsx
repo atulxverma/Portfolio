@@ -19,12 +19,12 @@ export function Loader() {
             text-4xl md:text-5xl font-bold
             bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600
             bg-clip-text text-transparent
-            tracking-widest
-          "
-        >
+            tracking-widest">
+
           ATUL VERMA
+          
         </motion.h1>
-        
+
         {/* Animated bar */}
         <div className="w-64 h-[3px] bg-white/10 rounded-full overflow-hidden">
           <motion.div
