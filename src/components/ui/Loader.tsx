@@ -26,6 +26,7 @@ export function Loader() {
         </motion.h1>
 
         {/* Animated bar */}
+        
         <div className="w-64 h-[3px] bg-white/10 rounded-full overflow-hidden">
           <motion.div
             initial={{ x: "-100%" }}
